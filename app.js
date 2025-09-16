@@ -8,7 +8,7 @@ exp.use(express.static(__dirname + '/www'));
 
 exp.get('/', function (req, res) {
     console.log('Reponse a un client');
-    res.sendFile(__dirname + '/www/index.html');
+    res.sendFile(__dirname + '/www/textchat.html');
 });
 exp.use(function (err, req, res, next) {
     console.error(err.stack);
@@ -28,7 +28,8 @@ exp.ws('/echo', function (ws, req) {
     ws.on('message', function (message) {
         console.log('De %s %s, message :%s', req.connection.remoteAddress,
             req.connection.remotePort, message);
-        ws.send(message);
+        message = ws._socket._peername.port + ' : ' + message; 
+        aWss.broadcast(message);
     });
 
     ws.on('close', function (reasonCode, description) {
@@ -60,5 +61,6 @@ aWss.broadcast = function broadcast(data) {
         }
     });
 };
+
 
 console.log('TP CIEL');
