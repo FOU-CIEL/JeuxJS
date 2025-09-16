@@ -1,1 +1,8 @@
-﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196" />
+﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
+  <ItemGroup>
+    <None Remove="www\NewFolder1\**" />
+    <None Remove="www\NewFolder\**" />
+    <TypeScriptConfiguration Remove="www\NewFolder1\**" />
+    <TypeScriptConfiguration Remove="www\NewFolder\**" />
+  </ItemGroup>
+</Project>
